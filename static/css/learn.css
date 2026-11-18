@@ -1,0 +1,213 @@
+/* ==========================================================================
+   AlgoVision - Learning & Quizzes Stylesheet
+   ========================================================================== */
+
+.learn-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 24px;
+}
+
+.learn-sidebar {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: fit-content;
+}
+
+.learn-sidebar-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 12px;
+}
+
+.learn-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.learn-nav-item:hover {
+    color: #ffffff;
+    background: var(--bg-surface);
+}
+
+.learn-nav-item.active {
+    color: var(--accent-cyan);
+    background: rgba(56, 189, 248, 0.12);
+    font-weight: 600;
+}
+
+.learn-content-main {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+}
+
+.learn-chapter {
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.learn-chapter.active {
+    display: flex;
+}
+
+.chapter-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.chapter-lead {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.theory-card-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.theory-card-box h4 {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.theory-card-box p, .theory-card-box ul {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.theory-card-box ul {
+    padding-left: 20px;
+}
+
+.chart-box-wrap {
+    height: 320px;
+    position: relative;
+    margin: 10px 0;
+}
+
+/* Quizzes */
+.quiz-section-block {
+    margin-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.quiz-heading {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.quiz-question-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quiz-q-title {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+.quiz-options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.quiz-option-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.quiz-option-label:hover {
+    color: #ffffff;
+    border-color: var(--border-strong);
+}
+
+.quiz-option-label input {
+    accent-color: var(--accent-cyan);
+}
+
+.quiz-feedback-box {
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.feedback-correct {
+    background: rgba(16, 185, 129, 0.1);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.feedback-wrong {
+    background: rgba(244, 63, 94, 0.1);
+    color: #f87171;
+    border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.quiz-submit-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.quiz-score-badge {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-emerald);
+}
+
+@media (max-width: 900px) {
+    .learn-layout {
+        grid-template-columns: 1fr;
+    }
+}

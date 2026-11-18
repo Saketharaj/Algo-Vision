@@ -1,0 +1,192 @@
+/* ==========================================================================
+   AlgoVision - Algorithm Library & Explorer Stylesheet
+   ========================================================================== */
+
+.library-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.library-top-bar {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.library-filters-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.library-search-box {
+    position: relative;
+    flex: 1;
+    min-width: 240px;
+}
+
+.library-search-input {
+    width: 100%;
+    padding-left: 36px;
+}
+
+.library-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.library-cat-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.library-cat-filter {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.library-cat-filter:hover {
+    color: #ffffff;
+    border-color: var(--border-strong);
+}
+
+.library-cat-filter.active {
+    background: rgba(56, 189, 248, 0.12);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    font-weight: 600;
+}
+
+/* Cards Grid */
+.library-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+.lib-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.lib-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+}
+
+.lib-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lib-card-tags {
+    display: flex;
+    gap: 6px;
+}
+
+.lib-bookmark-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.lib-bookmark-btn:hover, .lib-bookmark-btn.bookmarked {
+    color: var(--accent-amber);
+}
+
+.lib-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.lib-card-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.lib-card-complexities {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 8px 10px;
+}
+
+.comp-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.comp-chip-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.comp-chip-val {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.lib-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.empty-state-card {
+    grid-column: 1 / -1;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 48px 24px;
+    text-align: center;
+}
+
+.empty-state-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.empty-state-sub {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}

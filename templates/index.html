@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlgoVision – Interactive Algorithm Learning & Visualization Platform</title>
+    
+    <!-- Professional Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/landing.css">
+    <link rel="stylesheet" href="/static/css/workspace.css">
+    <link rel="stylesheet" href="/static/css/compare.css">
+    <link rel="stylesheet" href="/static/css/library.css">
+    <link rel="stylesheet" href="/static/css/learn.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+
+    <!-- ================================================================= -->
+    <!-- NAVBAR                                                            -->
+    <!-- ================================================================= -->
+    <header class="app-navbar">
+        <div class="navbar-inner">
+            <a href="#landing" class="brand-logo">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+                <span>AlgoVision</span>
+                <span class="brand-version">v2.4</span>
+            </a>
+
+            <ul class="nav-links" id="navbar-nav-links">
+                <li><a href="#landing" class="nav-link" data-view="landing">Overview</a></li>
+                <li><a href="#workspace" class="nav-link" data-view="workspace">Workspace</a></li>
+                <li><a href="#compare" class="nav-link" data-view="compare">Comparison</a></li>
+                <li><a href="#performance" class="nav-link" data-view="performance">Performance Lab</a></li>
+                <li><a href="#library" class="nav-link" data-view="library">Library</a></li>
+                <li><a href="#learn" class="nav-link" data-view="learn">Learn DSA</a></li>
+                <li><a href="#dashboard" class="nav-link" data-view="dashboard">Dashboard</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <span class="nav-user-label" id="nav-user-label">Guest Mode</span>
+                <button class="btn btn-primary btn-sm" id="nav-auth-btn">Sign In / Register</button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================================================================= -->
+    <!-- VIEW A: LANDING PAGE                                              -->
+    <!-- ================================================================= -->
+    <main id="view-landing" class="app-view">
+        <div class="landing-container">
+            <!-- Hero -->
+            <section class="hero-section">
+                <div class="hero-copy">
+                    <div class="hero-badge-pill">
+                        <span>●</span> Interactive Execution Engine
+                    </div>
+                    <h1 class="hero-title">
+                        Master Data Structures & Algorithms Through Real-Time Visual Execution.
+                    </h1>
+                    <p class="hero-desc">
+                        A high-performance algorithmic experimentation workbench. Step backward and forward through sorting passes, inspect binary search intervals, and interactively construct graph networks.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" id="hero-btn-workspace">Launch Workspace →</button>
+                        <button class="btn btn-secondary" id="hero-btn-explore">Explore 15 Algorithms</button>
+                        <button class="btn btn-outline" onclick="window.location.hash='#compare'">Compare Algorithms</button>
+                    </div>
+                </div>
+
+                <div class="hero-preview-card">
+                    <div class="hero-preview-header">
+                        <span class="hero-preview-title">
+                            <span class="hero-preview-pulse"></span>
+                            Live Execution: Quick Sort (Partitioning)
+                        </span>
+                        <button class="btn btn-secondary btn-xs" id="hero-preview-shuffle">Shuffle</button>
+                    </div>
+                    <div class="hero-canvas-wrap">
+                        <canvas id="hero-preview-canvas"></canvas>
+                    </div>
+                    <div class="hero-preview-footer">
+                        <span>Deterministic Step Engine</span>
+                        <span class="font-mono text-cyan">O(N log N) Average</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Categories -->
+            <section class="landing-section">
+                <div class="section-header-block">
+                    <span class="section-subtitle">Algorithmic Domains</span>
+                    <h2 class="section-heading">Featured Categories</h2>
+                </div>
+
+                <div class="landing-cat-grid">
+                    <div class="landing-cat-card" data-cat="sorting">
+                        <div class="cat-card-icon text-cyan">⇅</div>
+                        <h3 class="cat-card-title">Sorting Algorithms</h3>
+                        <p class="cat-card-desc">
+                            7 essential sorting paradigms from elementary Bubble, Selection, and Insertion sorts to divide-and-conquer Merge and Quick Sort, Heap Sort, and linear Counting Sort.
+                        </p>
+                        <div class="cat-card-meta">
+                            <span>7 Algorithms</span> <span>→</span>
+                        </div>
+                    </div>
+
+                    <div class="landing-cat-card" data-cat="searching">
+                        <div class="cat-card-icon text-amber">🔍</div>
+                        <h3 class="cat-card-title">Searching Algorithms</h3>
+                        <p class="cat-card-desc">
+                            Sequential scan, logarithmic binary interval bisection, jump search with √N block jumping, and statistical interpolation search on uniform keys.
+                        </p>
+                        <div class="cat-card-meta">
+                            <span>4 Algorithms</span> <span>→</span>
+                        </div>
+                    </div>
+
+                    <div class="landing-cat-card" data-cat="graph">
+                        <div class="cat-card-icon text-purple">🕸</div>
+                        <h3 class="cat-card-title">Graph Algorithms</h3>
+                        <p class="cat-card-desc">
+                            Traverse, relax, and solve shortest path problems with interactive BFS, DFS, Dijkstra’s priority relaxation, and Euclidean-informed A* pathfinding.
+                        </p>
+                        <div class="cat-card-meta">
+                            <span>4 Algorithms</span> <span>→</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Technical Pipeline -->
+            <section class="landing-section">
+                <div class="section-header-block">
+                    <span class="section-subtitle">Architecture</span>
+                    <h2 class="section-heading">How AlgoVision Works</h2>
+                </div>
+
+                <div class="pipeline-grid">
+                    <div class="pipeline-card">
+                        <span class="pipeline-step-num">01</span>
+                        <h4 class="pipeline-title">Deterministic Step Tracing</h4>
+                        <p class="pipeline-desc">
+                            Algorithms execute through pure generator functions that capture atomic operations: comparisons, swaps, pointer advances, and frontier relaxations.
+                        </p>
+                    </div>
+
+                    <div class="pipeline-card">
+                        <span class="pipeline-step-num">02</span>
+                        <h4 class="pipeline-title">Bi-Directional Time Travel</h4>
+                        <p class="pipeline-desc">
+                            Every execution step retains an immutable state snapshot, enabling true single-step forward, backward scrubbing, and variable speed playback without desynchronization.
+                        </p>
+                    </div>
+
+                    <div class="pipeline-card">
+                        <span class="pipeline-step-num">03</span>
+                        <h4 class="pipeline-title">Line-Synchronized Code</h4>
+                        <p class="pipeline-desc">
+                            Pseudocode and reference implementations in JavaScript, Python, and C++ dynamically highlight the precise line being evaluated at each step.
+                        </p>
+                    </div>
+
+                    <div class="pipeline-card">
+                        <span class="pipeline-step-num">04</span>
+                        <h4 class="pipeline-title">Empirical Benchmark Lab</h4>
+                        <p class="pipeline-desc">
+                            Compare actual operation counts (comparisons, writes, CPU milliseconds) across input sizes up to N=500 to empirically verify asymptotic Big-O growth.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- VIEW B: ALGORITHM VISUALIZATION WORKSPACE                         -->
+    <!-- ================================================================= -->
+    <main id="view-workspace" class="app-view">
+        <div class="workspace-container">
+            <!-- Header Bar -->
+            <div class="workspace-header">
+                <div class="workspace-header-info">
+                    <div class="workspace-algo-heading">
+                        <h2 class="workspace-algo-title" id="workspace-algo-title">Quick Sort</h2>
+                        <span class="lib-tag tag-sorting" id="workspace-badge-category">SORTING</span>
+                        <span class="lib-tag tag-medium" id="workspace-badge-difficulty">Medium</span>
+                        <button class="btn-bookmark" id="workspace-bookmark-btn" title="Bookmark Algorithm">★</button>
+                    </div>
+                    <p class="workspace-algo-desc" id="workspace-algo-desc">
+                        Divide-and-conquer sorting algorithm that selects a pivot, partitions elements into subarrays, and recursively sorts each partition.
+                    </p>
+                </div>
+
+                <div class="workspace-header-actions">
+                    <select class="form-select workspace-algo-select" id="workspace-algo-select" aria-label="Select Algorithm"></select>
+                </div>
+            </div>
+
+            <!-- Prominent Custom User Input Bar -->
+            <div class="workspace-user-input-card" id="workspace-user-input-section">
+                <div class="user-input-header">
+                    <span class="user-input-label">
+                        <span class="text-cyan">⌨ User Input Array:</span>
+                        <span class="text-muted" style="font-size: 0.85rem; font-weight: normal; margin-left: 8px;">
+                            Enter your numbers separated by commas or spaces (e.g. <code>42, 17, 89, 5, 63, 28, 71</code>)
+                        </span>
+                    </span>
+                    <span class="text-muted" id="user-input-count-badge" style="font-size: 0.8rem; font-family: var(--font-mono);">10 elements</span>
+                </div>
+                <div class="user-input-controls">
+                    <input type="text" class="form-input font-mono user-input-field" id="workspace-inline-array-input" placeholder="Type custom numbers here: 45, 12, 89, 23, 7, 56, 34">
+                    <button class="btn btn-primary" id="btn-apply-inline-input">✓ Apply Custom Array</button>
+                    <button class="btn btn-secondary btn-sm" id="btn-inline-randomize">↻ Random Array</button>
+                    <button class="btn btn-outline btn-sm" id="btn-inline-reversed">Reversed</button>
+                    <button class="btn btn-outline btn-sm" id="btn-inline-nearly">Nearly Sorted</button>
+                    
+                    <!-- Search Target input when in searching mode -->
+                    <div class="inline-search-target-box hidden" id="inline-search-target-box">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: #ffffff;">Target:</span>
+                        <input type="number" class="form-input font-mono" id="workspace-inline-target-input" value="42" style="width: 75px; padding: 6px 10px;">
+                        <button class="btn btn-primary btn-sm" id="btn-inline-search">Find Target</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualizer Stage -->
+            <div class="visualizer-stage-card">
+                <!-- Canvases -->
+                <div class="stage-canvas-wrapper">
+                    <canvas id="workspace-sort-canvas"></canvas>
+                    <canvas id="workspace-search-canvas" class="hidden"></canvas>
+                    <canvas id="workspace-graph-canvas" class="hidden"></canvas>
+                </div>
+
+                <!-- Step Description Callout Banner -->
+                <div class="workspace-step-banner">
+                    <span class="step-desc-text" id="workspace-step-description">
+                        Ready. Press Play or Step Forward to start execution.
+                    </span>
+                    <span class="step-counter-pill" id="workspace-step-counter">Step 1 / 1</span>
+                </div>
+
+                <!-- Real-Time Metrics Strip -->
+                <div class="workspace-metrics-strip">
+                    <div class="metric-strip-cell">
+                        <span class="metric-strip-label">Comparisons</span>
+                        <span class="metric-strip-val text-amber" id="metric-comparisons">0</span>
+                    </div>
+                    <div class="metric-strip-cell">
+                        <span class="metric-strip-label">Swaps / Writes</span>
+                        <span class="metric-strip-val text-rose" id="metric-swaps">0</span>
+                    </div>
+                    <div class="metric-strip-cell">
+                        <span class="metric-strip-label">Total Operations</span>
+                        <span class="metric-strip-val text-cyan" id="metric-operations">0</span>
+                    </div>
+                </div>
+
+                <!-- Playback Controller Toolbar -->
+                <div class="workspace-playback-bar">
+                    <div class="playback-controls-row">
+                        <div class="playback-button-cluster">
+                            <button class="btn btn-primary" id="btn-play-pause">
+                                <span class="icon-play">▶</span> Play
+                            </button>
+                            <button class="btn btn-secondary" id="btn-prev-step" title="Previous Step">◀ Step</button>
+                            <button class="btn btn-secondary" id="btn-next-step" title="Next Step">Step ▶</button>
+                            <button class="btn btn-outline" id="btn-restart" title="Restart">↺ Restart</button>
+                        </div>
+
+                        <!-- Graph Toolbar if active -->
+                        <div class="graph-toolbar hidden" id="controls-graph-group">
+                            <button class="btn btn-secondary btn-sm graph-mode-btn active" data-mode="MOVE">Drag Nodes</button>
+                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="ADD_NODE">+ Add Node</button>
+                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="ADD_EDGE">+ Add Edge</button>
+                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="SET_START">Set Start</button>
+                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="SET_TARGET">Set Goal</button>
+                            <select class="form-select form-select-sm" id="graph-preset-select" style="max-width: 140px;">
+                                <option value="network">Preset: Network</option>
+                                <option value="tree">Preset: Tree</option>
+                                <option value="cycle">Preset: Cycle</option>
+                                <option value="disconnected">Preset: Disconnected</option>
+                            </select>
+                            <button class="btn btn-danger btn-sm" id="btn-graph-clear">Clear</button>
+                        </div>
+
+                        <div class="scrubber-control-group">
+                            <span class="text-muted font-mono" style="font-size: 0.8rem;">Scrub</span>
+                            <input type="range" class="range-scrubber" id="workspace-scrubber" min="0" max="0" value="0">
+                        </div>
+                    </div>
+
+                    <!-- Tuning Inputs Row -->
+                    <div class="workspace-inputs-tuning">
+                        <div class="tuning-cluster">
+                            <div class="tuning-item">
+                                <span class="font-bold text-white">Speed:</span>
+                                <input type="range" class="tuning-slider" id="workspace-speed-slider" min="1" max="100" value="40" style="width: 130px;">
+                                <span class="font-mono text-cyan" id="workspace-speed-label">0.85s / step (Slow & Clear)</span>
+                            </div>
+
+                            <div class="tuning-item" id="controls-array-group">
+                                <span>Size:</span>
+                                <input type="range" class="tuning-slider" id="workspace-size-slider" min="5" max="40" value="10" style="width: 80px;">
+                                <span class="font-mono text-cyan" id="workspace-size-label">10</span>
+                            </div>
+                        </div>
+
+                        <div class="tuning-cluster">
+                            <button class="btn btn-secondary btn-sm" id="btn-randomize-dataset">↻ Randomize Array</button>
+                            <button class="btn btn-primary btn-sm" id="btn-workspace-open-quiz" style="background: linear-gradient(135deg, #0ea5e9, #8b5cf6); border: none; font-weight: 600;">
+                                🎓 Test Knowledge (10 Questions)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lower Split: Code Viewer & Theoretical Complexity -->
+            <div class="workspace-details-split">
+                <!-- Synchronized Code Viewer -->
+                <div class="code-viewer-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Synchronized Implementation</span>
+                        <div class="code-lang-tabs">
+                            <button class="code-lang-tab active" data-lang="pseudocode">Pseudocode</button>
+                            <button class="code-lang-tab" data-lang="javascript">JavaScript</button>
+                            <button class="code-lang-tab" data-lang="python">Python</button>
+                            <button class="code-lang-tab" data-lang="cpp">C++</button>
+                        </div>
+                    </div>
+                    <div class="code-lines-scroll" id="workspace-code-display">
+                        <!-- Populated by workspace.js -->
+                    </div>
+                </div>
+
+                <!-- Complexity & Engineering Notes -->
+                <div class="theory-overview-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">Complexity & Engineering Trade-offs</span>
+                    </div>
+                    <div class="theory-content-body">
+                        <div class="complexity-summary-grid">
+                            <div class="comp-metric-box">
+                                <span class="comp-metric-name">Best Case</span>
+                                <span class="comp-metric-value text-emerald" id="comp-time-best">O(N log N)</span>
+                            </div>
+                            <div class="comp-metric-box">
+                                <span class="comp-metric-name">Average Case</span>
+                                <span class="comp-metric-value text-cyan" id="comp-time-avg">O(N log N)</span>
+                            </div>
+                            <div class="comp-metric-box">
+                                <span class="comp-metric-name">Worst Case</span>
+                                <span class="comp-metric-value text-amber" id="comp-time-worst">O(N²)</span>
+                            </div>
+                            <div class="comp-metric-box">
+                                <span class="comp-metric-name">Space Complexity</span>
+                                <span class="comp-metric-value text-purple" id="comp-space">O(log N)</span>
+                            </div>
+                            <div class="comp-metric-box">
+                                <span class="comp-metric-name">Stability</span>
+                                <span class="comp-metric-value text-white" id="comp-stability">Unstable</span>
+                            </div>
+                            <div class="comp-metric-box">
+                                <span class="comp-metric-name">In-Place</span>
+                                <span class="comp-metric-value text-white" id="comp-in-place">Yes</span>
+                            </div>
+                        </div>
+
+                        <div class="theory-section-block">
+                            <span class="theory-section-title">Theoretical Foundations</span>
+                            <p class="theory-text-p" id="workspace-theory-text"></p>
+                        </div>
+
+                        <div class="theory-section-block">
+                            <span class="theory-section-title">Practical Engineering Use Cases</span>
+                            <p class="theory-text-p" id="workspace-practical-use"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- VIEW C: ALGORITHM COMPARISON                                      -->
+    <!-- ================================================================= -->
+    <main id="view-compare" class="app-view">
+        <div class="compare-container">
+            <div class="compare-top-header">
+                <div>
+                    <h2>Multi-Algorithm Comparison Workbench</h2>
+                    <p class="text-secondary" style="font-size: 0.9rem; margin-top: 4px;">
+                        Select sorting algorithms to execute side-by-side on an identical input array. Compare actual comparison counts and array writes in real time.
+                    </p>
+                </div>
+
+                <div class="compare-chips-cluster" id="compare-algo-selector">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div class="workspace-inputs-tuning" style="padding-top: 10px;">
+                    <div class="tuning-cluster">
+                        <button class="btn btn-primary" id="btn-compare-play-pause">▶ Play All</button>
+                        <button class="btn btn-secondary btn-sm" id="btn-compare-step">Step All</button>
+                        <button class="btn btn-outline btn-sm" id="btn-compare-restart">Restart All</button>
+                        <button class="btn btn-secondary btn-sm" id="btn-compare-randomize">↻ New Random Array</button>
+                    </div>
+
+                    <div class="tuning-cluster">
+                        <button class="btn btn-outline btn-sm" id="btn-compare-preset-reversed">Reverse Array (Worst Case)</button>
+                        <button class="btn btn-outline btn-sm" id="btn-compare-preset-nearly">Nearly Sorted Array</button>
+                        <div class="tuning-item">
+                            <span class="font-bold text-white">Speed:</span>
+                            <input type="range" class="tuning-slider" id="compare-speed-slider" min="150" max="1500" value="650" step="50" style="width: 110px;">
+                            <span class="font-mono text-cyan" id="compare-speed-label">0.65s (Calibrated)</span>
+                        </div>
+                        <div class="tuning-item">
+                            <span>Size:</span>
+                            <input type="range" class="tuning-slider" id="compare-size-slider" min="10" max="45" value="25">
+                            <span class="font-mono text-cyan" id="compare-size-label">25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Verdict Banner -->
+            <div id="compare-verdict-banner" class="compare-verdict-card hidden"></div>
+
+            <!-- Canvases Grid -->
+            <div class="compare-canvases-grid" id="compare-canvases-grid">
+                <!-- Populated dynamically with side-by-side visualizer cards -->
+            </div>
+
+            <!-- Summary Bar Chart -->
+            <div class="compare-chart-card">
+                <div>
+                    <h3 style="font-size: 1.1rem; color: #ffffff;">Comparative Operations Analysis</h3>
+                    <p class="text-muted" style="font-size: 0.85rem;">Empirical comparison of element comparisons and writes on the identical input sequence.</p>
+                </div>
+                <div class="compare-chart-wrapper">
+                    <canvas id="compare-summary-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- VIEW D: PERFORMANCE ANALYSIS LAB                                  -->
+    <!-- ================================================================= -->
+    <main id="view-performance" class="app-view">
+        <div class="compare-container">
+            <!-- Beginner-Friendly Guide & Purpose -->
+            <div class="perf-guide-card">
+                <div class="perf-guide-title">
+                    <span>💡 What is this Laboratory & Why does it exist?</span>
+                </div>
+                <div class="perf-guide-body">
+                    In textbook theory, algorithms are represented as mathematical formulas like <code>O(N log N)</code> and <code>O(N²)</code>. 
+                    <strong>This lab bridges theory and reality:</strong> it benchmarks actual sorting algorithms on your machine across growing datasets (from <strong>N = 20 up to 400 elements</strong>), counting every single element comparison, memory swap, and microsecond of execution time.
+                </div>
+                <div class="perf-cards-grid">
+                    <div class="perf-concept-card highlight-green">
+                        <div class="perf-concept-title">🏆 1. The Scaling Champions</div>
+                        <div class="perf-concept-desc">
+                            <strong>Quick Sort & Merge Sort (O(N log N))</strong>: Notice how their lines remain flat and low even at N=400 (~2,500 operations). They effortlessly scale to millions of elements.
+                        </div>
+                    </div>
+                    <div class="perf-concept-card highlight-rose">
+                        <div class="perf-concept-title">🐢 2. The Quadratic Wall</div>
+                        <div class="perf-concept-desc">
+                            <strong>Bubble Sort (O(N²))</strong>: Watch the curve explode upward! At N=400, it requires <strong>over 80,000 operations</strong> (30x more CPU work) to accomplish the exact same task!
+                        </div>
+                    </div>
+                    <div class="perf-concept-card highlight-cyan">
+                        <div class="perf-concept-title">🔍 3. What the Numbers Mean</div>
+                        <div class="perf-concept-desc">
+                            <strong>Comparisons</strong> = checks between two items. 
+                            <strong>Swaps/Writes</strong> = memory modifications. 
+                            <strong>Duration</strong> = physical CPU time in milliseconds.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="compare-top-header">
+                <div>
+                    <h2>Empirical Performance Benchmark Workbench</h2>
+                    <p class="text-secondary" style="font-size: 0.9rem; margin-top: 4px;">
+                        Select input distributions and algorithms to measure real asymptotic scaling on your system.
+                    </p>
+                </div>
+
+                <div class="workspace-inputs-tuning" style="padding-top: 8px;">
+                    <div class="tuning-cluster">
+                        <label class="tuning-item">
+                            <span>Distribution:</span>
+                            <select class="form-select" id="perf-distribution-select">
+                                <option value="random">Uniform Random</option>
+                                <option value="nearly_sorted">Nearly Sorted (95% sorted)</option>
+                                <option value="reversed">Strictly Reversed</option>
+                                <option value="duplicates">High Duplicate Ratio</option>
+                            </select>
+                        </label>
+
+                        <button class="btn btn-primary" id="btn-run-benchmark">Run Empirical Benchmark</button>
+                    </div>
+
+                    <div class="tuning-cluster" style="align-items: center;">
+                        <span class="text-white font-bold" style="font-size: 0.8rem;">Quick Presets:</span>
+                        <button class="btn btn-outline btn-sm" id="btn-perf-preset-fast-vs-slow">🚀 Fast vs 🐢 Slow (Quick vs Bubble)</button>
+                        <button class="btn btn-outline btn-sm" id="btn-perf-preset-nearly-sorted">✨ The Nearly-Sorted Surprise</button>
+                        <button class="btn btn-secondary btn-sm" id="btn-perf-preset-all">📊 Benchmark All 5 Algorithms</button>
+                    </div>
+
+                    <div class="tuning-cluster">
+                        <span class="text-muted" style="font-size: 0.8rem;">Algorithms to Test:</span>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="bubble-sort" checked> Bubble</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="insertion-sort" checked> Insertion</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="merge-sort" checked> Merge</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="quick-sort" checked> Quick</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="heap-sort" checked> Heap</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plain-English Dynamic Verdict Box -->
+            <div id="perf-verdict-banner" class="perf-verdict-box hidden"></div>
+
+            <!-- Performance Charts Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="compare-chart-card">
+                    <h3 style="font-size: 1rem; color: #ffffff;">Operations Count vs Array Size (N)</h3>
+                    <div style="height: 280px; position: relative;">
+                        <canvas id="perf-chart-ops"></canvas>
+                    </div>
+                </div>
+
+                <div class="compare-chart-card">
+                    <h3 style="font-size: 1rem; color: #ffffff;">Execution Duration (ms) vs Array Size (N)</h3>
+                    <div style="height: 280px; position: relative;">
+                        <canvas id="perf-chart-time"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verified Metrics Table -->
+            <div class="dash-section-card">
+                <h3 class="dash-section-title">Measured Empirical Execution Data</h3>
+                <div class="data-table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Input Size (N)</th>
+                                <th>Comparisons</th>
+                                <th>Swaps / Writes</th>
+                                <th>Total Operations</th>
+                                <th>Execution Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="perf-metrics-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- VIEW E: ALGORITHM LIBRARY                                         -->
+    <!-- ================================================================= -->
+    <main id="view-library" class="app-view">
+        <div class="library-container">
+            <div class="library-top-bar">
+                <div>
+                    <h2>Algorithm Library</h2>
+                    <p class="text-secondary" style="font-size: 0.9rem; margin-top: 4px;">
+                        Explore our comprehensive catalog of 15 verified sorting, searching, and graph traversal algorithms.
+                    </p>
+                </div>
+
+                <div class="library-filters-row">
+                    <div class="library-search-box">
+                        <span class="library-search-icon">🔍</span>
+                        <input type="text" class="form-input library-search-input" id="library-search-input" placeholder="Search algorithms by name or description...">
+                    </div>
+
+                    <div class="library-cat-pills">
+                        <button class="library-cat-filter active" data-cat="all">All Domains</button>
+                        <button class="library-cat-filter" data-cat="sorting">Sorting</button>
+                        <button class="library-cat-filter" data-cat="searching">Searching</button>
+                        <button class="library-cat-filter" data-cat="graph">Graph Theory</button>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <select class="form-select form-select-sm" id="library-diff-select">
+                            <option value="all">All Difficulties</option>
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+
+                        <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">
+                            <input type="checkbox" id="library-bookmarked-toggle">
+                            <span>★ Bookmarked Only</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="library-cards-grid" id="library-cards-grid">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- VIEW F: LEARN DSA                                                 -->
+    <!-- ================================================================= -->
+    <main id="view-learn" class="app-view">
+        <div class="learn-layout">
+            <!-- Sidebar -->
+            <aside class="learn-sidebar">
+                <span class="learn-sidebar-title">Curriculum</span>
+                <div class="learn-nav-item active" data-tab="big-o">
+                    <span>📈</span> Big-O & Complexity
+                </div>
+                <div class="learn-nav-item" data-tab="sorting">
+                    <span>⇅</span> Sorting Paradigms
+                </div>
+                <div class="learn-nav-item" data-tab="searching">
+                    <span>🔍</span> Searching Concepts
+                </div>
+                <div class="learn-nav-item" data-tab="graphs">
+                    <span>🕸</span> Graph Traversals
+                </div>
+            </aside>
+
+            <!-- Main Content Chapters -->
+            <div class="learn-content-main">
+                <!-- Chapter 1: Big-O -->
+                <div class="learn-chapter active" id="chapter-big-o">
+                    <h2 class="chapter-title">Asymptotic Analysis & Big-O Notation</h2>
+                    <p class="chapter-lead">
+                        In computer science, algorithm efficiency is evaluated asymptotically to describe how resource requirements (CPU cycles and memory) scale as the input size $N$ approaches infinity.
+                    </p>
+
+                    <div class="theory-card-box">
+                        <h4>Asymptotic Growth Comparison</h4>
+                        <p>Observe how quadratic $O(N^2)$ curves diverge rapidly from linearithmic $O(N \log N)$ and linear $O(N)$ as input increases:</p>
+                        <div class="chart-box-wrap">
+                            <canvas id="big-o-growth-canvas"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="theory-card-box">
+                        <h4>The Three Asymptotic Notations</h4>
+                        <ul>
+                            <li><strong>Big-O ($O$):</strong> Strict upper bound. Guarantees the algorithm will run no slower than this function in the worst case.</li>
+                            <li><strong>Big-Omega ($\Omega$):</strong> Strict lower bound. Proves the minimum resources theoretically required by any algorithm solving this problem.</li>
+                            <li><strong>Big-Theta ($\Theta$):</strong> Tight bound. Exists when an algorithm's upper and lower bounds asymptotically coincide.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Quiz Section -->
+                    <div class="quiz-section-block">
+                        <h3 class="quiz-heading">Module Knowledge Check</h3>
+                        <div id="quiz-container-big-o"></div>
+                    </div>
+                </div>
+
+                <!-- Chapter 2: Sorting -->
+                <div class="learn-chapter" id="chapter-sorting">
+                    <h2 class="chapter-title">Sorting Paradigms & Lower Bounds</h2>
+                    <p class="chapter-lead">
+                        Sorting is the foundational algorithmic problem of rearranging an arbitrary collection into a strictly monotonic order.
+                    </p>
+
+                    <div class="theory-card-box">
+                        <h4>Comparison vs Non-Comparison Sorts</h4>
+                        <p>
+                            Any comparison-based algorithm (Bubble, Quick, Merge, Heap) is bounded by the mathematical lower bound $\Omega(N \log N)$. 
+                            Non-comparison sorts such as <strong>Counting Sort</strong> break this barrier by utilizing direct memory indexing, running in linear time $O(N + K)$ when the key range $K$ is bounded.
+                        </p>
+                    </div>
+
+                    <div class="theory-card-box">
+                        <h4>Algorithm Stability & Memory Hierarchy</h4>
+                        <p>
+                            A sort is <strong>stable</strong> if duplicate elements preserve their relative order from the input. 
+                            Furthermore, modern CPU hardware performance heavily favors contiguous linear array access (Quick Sort) over cache-evicting binary tree jumps (Heap Sort).
+                        </p>
+                    </div>
+
+                    <div class="quiz-section-block">
+                        <h3 class="quiz-heading">Module Knowledge Check</h3>
+                        <div id="quiz-container-sorting"></div>
+                    </div>
+                </div>
+
+                <!-- Chapter 3: Searching -->
+                <div class="learn-chapter" id="chapter-searching">
+                    <h2 class="chapter-title">Searching: Sequential vs Interval vs Heuristic</h2>
+                    <p class="chapter-lead">
+                        Locating a target value within a collection depends critically on whether the data is unordered, ordered, or uniformly distributed.
+                    </p>
+
+                    <div class="theory-card-box">
+                        <h4>Comparing Search Strategies</h4>
+                        <ul>
+                            <li><strong>Linear Search:</strong> $O(N)$ worst-case. Required whenever data is unsorted.</li>
+                            <li><strong>Binary Search:</strong> $O(\log N)$. Repeatedly bisects a sorted array. 32 comparisons can search 4 billion elements.</li>
+                            <li><strong>Jump Search:</strong> $O(\sqrt{N})$. Balances block jumps with linear scan. Superior when jumping backward is costly.</li>
+                            <li><strong>Interpolation Search:</strong> $O(\log \log N)$ average on uniformly distributed numbers by calculating probe slope.</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-section-block">
+                        <h3 class="quiz-heading">Module Knowledge Check</h3>
+                        <div id="quiz-container-searching"></div>
+                    </div>
+                </div>
+
+                <!-- Chapter 4: Graphs -->
+                <div class="learn-chapter" id="chapter-graphs">
+                    <h2 class="chapter-title">Graph Traversals & Shortest Paths</h2>
+                    <p class="chapter-lead">
+                        Graphs $G = (V, E)$ represent discrete relationships between entities. Traversing and discovering optimal routes are core engineering problems.
+                    </p>
+
+                    <div class="theory-card-box">
+                        <h4>Traversals & Optimal Routing</h4>
+                        <ul>
+                            <li><strong>BFS (Breadth-First Search):</strong> Level-order exploration using a FIFO queue. Guarantees shortest path on unweighted graphs.</li>
+                            <li><strong>DFS (Depth-First Search):</strong> Deep recursive exploration with backtracking. Used for cycle detection and topological sorting.</li>
+                            <li><strong>Dijkstra’s Algorithm:</strong> Greedy shortest path using a min-priority queue to iteratively relax edge distances on non-negative weighted graphs.</li>
+                            <li><strong>A* Search:</strong> Optimizes Dijkstra by incorporating an admissible heuristic $f(n) = g(n) + h(n)$ to direct exploration towards the target.</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-section-block">
+                        <h3 class="quiz-heading">Module Knowledge Check</h3>
+                        <div id="quiz-container-graphs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- VIEW G: DASHBOARD                                                 -->
+    <!-- ================================================================= -->
+    <main id="view-dashboard" class="app-view">
+        <div class="dashboard-container">
+            <!-- Welcome Banner -->
+            <div class="dashboard-welcome-banner">
+                <div class="dash-welcome-info">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <h2 class="dash-welcome-title" id="dash-welcome-title">Welcome</h2>
+                        <span class="status-pill badge-guest" id="dash-user-badge">Guest Session</span>
+                    </div>
+                    <p class="text-secondary" style="font-size: 0.9rem;">
+                        Real-time analytics and history tracked across your active session.
+                    </p>
+                </div>
+                <div>
+                    <button class="btn btn-secondary btn-sm" id="dash-btn-auth-action">Manage Account / Sign In</button>
+                </div>
+            </div>
+
+            <!-- Stats Tiles -->
+            <div class="dash-stats-grid">
+                <div class="dash-stat-card">
+                    <span class="dash-stat-label">Visualizations Run</span>
+                    <span class="dash-stat-num text-cyan" id="dash-stat-runs">0</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-label">Algorithms Explored</span>
+                    <span class="dash-stat-num text-emerald" id="dash-stat-algos">0 / 15</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-label">Operations Executed</span>
+                    <span class="dash-stat-num text-amber" id="dash-stat-ops">0</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-label">Total Comparisons</span>
+                    <span class="dash-stat-num text-purple" id="dash-stat-comps">0</span>
+                </div>
+            </div>
+
+            <!-- Bookmarked Algorithms -->
+            <div class="dash-section-card">
+                <h3 class="dash-section-title">Bookmarked Shortcuts</h3>
+                <div class="dash-bookmarks-shelf" id="dash-bookmarks-shelf">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Recent Visualizations History -->
+            <div class="dash-section-card">
+                <h3 class="dash-section-title">Recent Visualization History</h3>
+                <div class="data-table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Category</th>
+                                <th>Array Size</th>
+                                <th>Operations</th>
+                                <th>Comparisons</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dash-history-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Learning Progress -->
+            <div class="dash-section-card">
+                <h3 class="dash-section-title">Curriculum Progress</h3>
+                <div class="dash-progress-list" id="dash-progress-list">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Recommended Next Algorithms -->
+            <div class="dash-section-card">
+                <h3 class="dash-section-title">Recommended Algorithms</h3>
+                <div class="dash-recommended-grid" id="dash-recommended-grid">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================================================================= -->
+    <!-- MODAL 1: CUSTOM INPUT MODAL                                       -->
+    <!-- ================================================================= -->
+    <div class="modal-overlay hidden" id="modal-custom-input">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title">Custom Input Array</h3>
+                <button class="modal-close-btn" id="modal-custom-close">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 12px;">
+                    Enter integers separated by commas or spaces (e.g. <code>42, 18, 9, 65, 33, 7, 50</code>).
+                </p>
+                <textarea class="form-textarea" id="custom-input-array" rows="4" style="width: 100%; font-family: var(--font-mono);"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="document.getElementById('modal-custom-input').classList.add('hidden')">Cancel</button>
+                <button class="btn btn-primary" id="btn-apply-custom-input">Apply Dataset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- MODAL 2: AUTHENTICATION MODAL                                     -->
+    <!-- ================================================================= -->
+    <div class="modal-overlay hidden" id="modal-auth">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 class="modal-title" id="auth-modal-title">Sign In to AlgoVision</h3>
+                <button class="modal-close-btn" id="modal-auth-close">×</button>
+            </div>
+            <form id="auth-form">
+                <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
+                    <div id="auth-error-msg" class="quiz-feedback-box feedback-wrong hidden"></div>
+
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Username or Email</label>
+                        <input type="text" class="form-input" id="auth-username-input" style="width: 100%;" required>
+                    </div>
+
+                    <div id="auth-email-group" class="hidden">
+                        <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Email Address</label>
+                        <input type="email" class="form-input" id="auth-email-input" style="width: 100%;">
+                    </div>
+
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Password</label>
+                        <input type="password" class="form-input" id="auth-password-input" style="width: 100%;" required>
+                    </div>
+
+                    <p id="auth-toggle-prompt" style="font-size: 0.85rem; color: var(--text-secondary);"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-auth').classList.add('hidden')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="auth-submit-btn">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- MODAL 3: ALGORITHM CONCEPT MASTERY QUIZ (10 QUESTIONS)             -->
+    <!-- ================================================================= -->
+    <div class="modal-overlay hidden" id="modal-algorithm-quiz">
+        <div class="modal-dialog quiz-modal-dialog">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title" id="quiz-modal-algo-title">Concept Mastery Quiz</h3>
+                    <span class="text-muted" style="font-size: 0.8rem;">10 High-Yield Conceptual Questions</span>
+                </div>
+                <button class="modal-close-btn" id="modal-quiz-close">×</button>
+            </div>
+
+            <!-- Quiz Progress Track -->
+            <div class="quiz-progress-strip">
+                <div class="quiz-progress-track">
+                    <div class="quiz-progress-fill" id="quiz-progress-bar" style="width: 10%;"></div>
+                </div>
+                <div class="quiz-progress-labels">
+                    <span id="quiz-question-number-pill" class="text-cyan font-mono" style="font-weight: 600;">Question 1 of 10</span>
+                    <span id="quiz-current-score-pill" class="font-mono text-emerald" style="font-weight: 600;">Score: 0 / 10</span>
+                </div>
+            </div>
+
+            <!-- Question Screen -->
+            <div class="modal-body" id="quiz-question-view">
+                <h4 class="quiz-question-text" id="quiz-question-text">Loading question...</h4>
+
+                <div class="quiz-options-list" id="quiz-options-list">
+                    <!-- Populated dynamically: Option A, B, C, D -->
+                </div>
+
+                <!-- Detailed Explanation Callout -->
+                <div class="quiz-explanation-box hidden" id="quiz-explanation-box">
+                    <div class="explanation-header" id="quiz-explanation-header"></div>
+                    <p class="explanation-text" id="quiz-explanation-text"></p>
+                </div>
+            </div>
+
+            <!-- Final Summary Screen (Shown after Question 10) -->
+            <div class="modal-body hidden" id="quiz-summary-view">
+                <div class="quiz-summary-card">
+                    <div class="summary-badge" id="quiz-summary-badge">🏆</div>
+                    <h3 id="quiz-summary-title">Concept Mastery Completed!</h3>
+                    <div class="summary-score-large" id="quiz-summary-score">8 / 10</div>
+                    <p class="summary-desc" id="quiz-summary-desc">Great job! You have a strong grasp of how this algorithm operates under the hood.</p>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="justify-content: space-between;">
+                <button type="button" class="btn btn-secondary btn-sm" id="btn-quiz-exit">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-quiz-next" disabled>Next Question →</button>
+                <button type="button" class="btn btn-primary hidden" id="btn-quiz-retake">↻ Retake Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- FOOTER                                                            -->
+    <!-- ================================================================= -->
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <span class="footer-text">
+                © 2026 AlgoVision – Interactive Algorithm Learning Platform. Engineered for Computer Science Excellence.
+            </span>
+            <ul class="footer-links">
+                <li><a href="#workspace">Visualizer</a></li>
+                <li><a href="#compare">Comparator</a></li>
+                <li><a href="#performance">Performance Lab</a></li>
+                <li><a href="#library">Library</a></li>
+                <li><a href="#learn">Curriculum</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Vendor Scripts -->
+    <script src="/static/vendor/chart.umd.js"></script>
+    <script src="/static/vendor/lucide.min.js"></script>
+
+    <!-- Master Application Bundle -->
+    <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
