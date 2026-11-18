@@ -1,14 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlgoVision – Interactive Algorithm Learning & Visualization Platform</title>
-    
-    <!-- Professional Typography -->
+
+    <!-- Professional Typography: Space Grotesk, Inter, & IBM Plex Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Premium Design System Core Stylesheet Injection -->
+    <style>
+        /* ========================================================================== */
+        /* PREMIUM DESIGN SYSTEM VARIABLES & GLOBAL STYLES                             */
+        /* ========================================================================== */
+        :root {
+            /* Color Palette */
+            --bg-primary: #0B0F19;
+            --bg-surface: #151B2B;
+            --bg-elevated: #1E293B;
+
+            --accent-primary: #6366F1;
+            --accent-secondary: #22D3EE;
+
+            --text-primary: #F8FAFC;
+            --text-secondary: #A6B0C3;
+
+            --success: #34D399;
+            --warning: #FBBF24;
+            --error: #F87171;
+
+            /* Typography */
+            --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+
+            /* Borders & Shadows */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Global Reset & Base Typography */
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .brand-logo span:not(.brand-version) {
+            font-family: var(--font-heading);
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* Code, Metrics, and Complexity Readouts */
+        .font-mono,
+        pre,
+        code,
+        .metric-strip-val,
+        .comp-metric-value,
+        .step-counter-pill {
+            font-family: var(--font-mono);
+        }
+
+        /* Primary Cards & Surfaces */
+        .app-view,
+        .workspace-step-banner,
+        .code-viewer-panel,
+        .theory-overview-panel,
+        .compare-chart-card,
+        .dash-section-card,
+        .hero-preview-card,
+        .landing-cat-card,
+        .pipeline-card,
+        .visualizer-stage-card,
+        .compare-verdict-card,
+        .perf-guide-card,
+        .perf-concept-card,
+        .perf-verdict-box,
+        .dash-stat-card,
+        .modal-dialog {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .workspace-user-input-card,
+        .app-footer {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* Elevated Interactive Elements */
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 6px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            padding: 8px 16px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #4f46e5;
+            /* Slightly deeper indigo */
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-elevated);
+            color: var(--text-primary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .btn-outline:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-primary);
+        }
+
+        /* Text Utilities */
+        .text-cyan {
+            color: var(--accent-secondary) !important;
+        }
+
+        .text-indigo {
+            color: var(--accent-primary) !important;
+        }
+
+        .text-emerald,
+        .text-success {
+            color: var(--success) !important;
+        }
+
+        .text-amber,
+        .text-warning {
+            color: var(--warning) !important;
+        }
+
+        .text-rose,
+        .text-error {
+            color: var(--error) !important;
+        }
+
+        .text-secondary,
+        .text-muted {
+            color: var(--text-secondary) !important;
+        }
+    </style>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/static/css/main.css">
@@ -19,6 +178,7 @@
     <link rel="stylesheet" href="/static/css/learn.css">
     <link rel="stylesheet" href="/static/css/dashboard.css">
 </head>
+
 <body>
 
     <!-- ================================================================= -->
@@ -27,7 +187,8 @@
     <header class="app-navbar">
         <div class="navbar-inner">
             <a href="#landing" class="brand-logo">
-                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                     <polyline points="2 17 12 22 22 17"></polyline>
                     <polyline points="2 12 12 17 22 12"></polyline>
@@ -69,12 +230,14 @@
                         Master Data Structures & Algorithms Through Real-Time Visual Execution.
                     </h1>
                     <p class="hero-desc">
-                        A high-performance algorithmic experimentation workbench. Step backward and forward through sorting passes, inspect binary search intervals, and interactively construct graph networks.
+                        A high-performance algorithmic experimentation workbench. Step backward and forward through
+                        sorting passes, inspect binary search intervals, and interactively construct graph networks.
                     </p>
                     <div class="hero-actions">
                         <button class="btn btn-primary" id="hero-btn-workspace">Launch Workspace →</button>
                         <button class="btn btn-secondary" id="hero-btn-explore">Explore 15 Algorithms</button>
-                        <button class="btn btn-outline" onclick="window.location.hash='#compare'">Compare Algorithms</button>
+                        <button class="btn btn-outline" onclick="window.location.hash='#compare'">Compare
+                            Algorithms</button>
                     </div>
                 </div>
 
@@ -108,7 +271,8 @@
                         <div class="cat-card-icon text-cyan">⇅</div>
                         <h3 class="cat-card-title">Sorting Algorithms</h3>
                         <p class="cat-card-desc">
-                            7 essential sorting paradigms from elementary Bubble, Selection, and Insertion sorts to divide-and-conquer Merge and Quick Sort, Heap Sort, and linear Counting Sort.
+                            7 essential sorting paradigms from elementary Bubble, Selection, and Insertion sorts to
+                            divide-and-conquer Merge and Quick Sort, Heap Sort, and linear Counting Sort.
                         </p>
                         <div class="cat-card-meta">
                             <span>7 Algorithms</span> <span>→</span>
@@ -119,7 +283,8 @@
                         <div class="cat-card-icon text-amber">🔍</div>
                         <h3 class="cat-card-title">Searching Algorithms</h3>
                         <p class="cat-card-desc">
-                            Sequential scan, logarithmic binary interval bisection, jump search with √N block jumping, and statistical interpolation search on uniform keys.
+                            Sequential scan, logarithmic binary interval bisection, jump search with √N block jumping,
+                            and statistical interpolation search on uniform keys.
                         </p>
                         <div class="cat-card-meta">
                             <span>4 Algorithms</span> <span>→</span>
@@ -130,7 +295,8 @@
                         <div class="cat-card-icon text-purple">🕸</div>
                         <h3 class="cat-card-title">Graph Algorithms</h3>
                         <p class="cat-card-desc">
-                            Traverse, relax, and solve shortest path problems with interactive BFS, DFS, Dijkstra’s priority relaxation, and Euclidean-informed A* pathfinding.
+                            Traverse, relax, and solve shortest path problems with interactive BFS, DFS, Dijkstra’s
+                            priority relaxation, and Euclidean-informed A* pathfinding.
                         </p>
                         <div class="cat-card-meta">
                             <span>4 Algorithms</span> <span>→</span>
@@ -151,7 +317,8 @@
                         <span class="pipeline-step-num">01</span>
                         <h4 class="pipeline-title">Deterministic Step Tracing</h4>
                         <p class="pipeline-desc">
-                            Algorithms execute through pure generator functions that capture atomic operations: comparisons, swaps, pointer advances, and frontier relaxations.
+                            Algorithms execute through pure generator functions that capture atomic operations:
+                            comparisons, swaps, pointer advances, and frontier relaxations.
                         </p>
                     </div>
 
@@ -159,7 +326,8 @@
                         <span class="pipeline-step-num">02</span>
                         <h4 class="pipeline-title">Bi-Directional Time Travel</h4>
                         <p class="pipeline-desc">
-                            Every execution step retains an immutable state snapshot, enabling true single-step forward, backward scrubbing, and variable speed playback without desynchronization.
+                            Every execution step retains an immutable state snapshot, enabling true single-step forward,
+                            backward scrubbing, and variable speed playback without desynchronization.
                         </p>
                     </div>
 
@@ -167,7 +335,8 @@
                         <span class="pipeline-step-num">03</span>
                         <h4 class="pipeline-title">Line-Synchronized Code</h4>
                         <p class="pipeline-desc">
-                            Pseudocode and reference implementations in JavaScript, Python, and C++ dynamically highlight the precise line being evaluated at each step.
+                            Pseudocode and reference implementations in JavaScript, Python, and C++ dynamically
+                            highlight the precise line being evaluated at each step.
                         </p>
                     </div>
 
@@ -175,7 +344,8 @@
                         <span class="pipeline-step-num">04</span>
                         <h4 class="pipeline-title">Empirical Benchmark Lab</h4>
                         <p class="pipeline-desc">
-                            Compare actual operation counts (comparisons, writes, CPU milliseconds) across input sizes up to N=500 to empirically verify asymptotic Big-O growth.
+                            Compare actual operation counts (comparisons, writes, CPU milliseconds) across input sizes
+                            up to N=500 to empirically verify asymptotic Big-O growth.
                         </p>
                     </div>
                 </div>
@@ -198,12 +368,14 @@
                         <button class="btn-bookmark" id="workspace-bookmark-btn" title="Bookmark Algorithm">★</button>
                     </div>
                     <p class="workspace-algo-desc" id="workspace-algo-desc">
-                        Divide-and-conquer sorting algorithm that selects a pivot, partitions elements into subarrays, and recursively sorts each partition.
+                        Divide-and-conquer sorting algorithm that selects a pivot, partitions elements into subarrays,
+                        and recursively sorts each partition.
                     </p>
                 </div>
 
                 <div class="workspace-header-actions">
-                    <select class="form-select workspace-algo-select" id="workspace-algo-select" aria-label="Select Algorithm"></select>
+                    <select class="form-select workspace-algo-select" id="workspace-algo-select"
+                        aria-label="Select Algorithm"></select>
                 </div>
             </div>
 
@@ -213,22 +385,26 @@
                     <span class="user-input-label">
                         <span class="text-cyan">⌨ User Input Array:</span>
                         <span class="text-muted" style="font-size: 0.85rem; font-weight: normal; margin-left: 8px;">
-                            Enter your numbers separated by commas or spaces (e.g. <code>42, 17, 89, 5, 63, 28, 71</code>)
+                            Enter your numbers separated by commas or spaces (e.g.
+                            <code>42, 17, 89, 5, 63, 28, 71</code>)
                         </span>
                     </span>
-                    <span class="text-muted" id="user-input-count-badge" style="font-size: 0.8rem; font-family: var(--font-mono);">10 elements</span>
+                    <span class="text-muted" id="user-input-count-badge"
+                        style="font-size: 0.8rem; font-family: var(--font-mono);">10 elements</span>
                 </div>
                 <div class="user-input-controls">
-                    <input type="text" class="form-input font-mono user-input-field" id="workspace-inline-array-input" placeholder="Type custom numbers here: 45, 12, 89, 23, 7, 56, 34">
+                    <input type="text" class="form-input font-mono user-input-field" id="workspace-inline-array-input"
+                        placeholder="Type custom numbers here: 45, 12, 89, 23, 7, 56, 34">
                     <button class="btn btn-primary" id="btn-apply-inline-input">✓ Apply Custom Array</button>
                     <button class="btn btn-secondary btn-sm" id="btn-inline-randomize">↻ Random Array</button>
                     <button class="btn btn-outline btn-sm" id="btn-inline-reversed">Reversed</button>
                     <button class="btn btn-outline btn-sm" id="btn-inline-nearly">Nearly Sorted</button>
-                    
+
                     <!-- Search Target input when in searching mode -->
                     <div class="inline-search-target-box hidden" id="inline-search-target-box">
                         <span style="font-size: 0.85rem; font-weight: 600; color: #ffffff;">Target:</span>
-                        <input type="number" class="form-input font-mono" id="workspace-inline-target-input" value="42" style="width: 75px; padding: 6px 10px;">
+                        <input type="number" class="form-input font-mono" id="workspace-inline-target-input" value="42"
+                            style="width: 75px; padding: 6px 10px;">
                         <button class="btn btn-primary btn-sm" id="btn-inline-search">Find Target</button>
                     </div>
                 </div>
@@ -281,12 +457,18 @@
 
                         <!-- Graph Toolbar if active -->
                         <div class="graph-toolbar hidden" id="controls-graph-group">
-                            <button class="btn btn-secondary btn-sm graph-mode-btn active" data-mode="MOVE">Drag Nodes</button>
-                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="ADD_NODE">+ Add Node</button>
-                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="ADD_EDGE">+ Add Edge</button>
-                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="SET_START">Set Start</button>
-                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="SET_TARGET">Set Goal</button>
-                            <select class="form-select form-select-sm" id="graph-preset-select" style="max-width: 140px;">
+                            <button class="btn btn-secondary btn-sm graph-mode-btn active" data-mode="MOVE">Drag
+                                Nodes</button>
+                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="ADD_NODE">+ Add
+                                Node</button>
+                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="ADD_EDGE">+ Add
+                                Edge</button>
+                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="SET_START">Set
+                                Start</button>
+                            <button class="btn btn-secondary btn-sm graph-mode-btn" data-mode="SET_TARGET">Set
+                                Goal</button>
+                            <select class="form-select form-select-sm" id="graph-preset-select"
+                                style="max-width: 140px;">
                                 <option value="network">Preset: Network</option>
                                 <option value="tree">Preset: Tree</option>
                                 <option value="cycle">Preset: Cycle</option>
@@ -297,7 +479,8 @@
 
                         <div class="scrubber-control-group">
                             <span class="text-muted font-mono" style="font-size: 0.8rem;">Scrub</span>
-                            <input type="range" class="range-scrubber" id="workspace-scrubber" min="0" max="0" value="0">
+                            <input type="range" class="range-scrubber" id="workspace-scrubber" min="0" max="0"
+                                value="0">
                         </div>
                     </div>
 
@@ -306,20 +489,24 @@
                         <div class="tuning-cluster">
                             <div class="tuning-item">
                                 <span class="font-bold text-white">Speed:</span>
-                                <input type="range" class="tuning-slider" id="workspace-speed-slider" min="1" max="100" value="40" style="width: 130px;">
-                                <span class="font-mono text-cyan" id="workspace-speed-label">0.85s / step (Slow & Clear)</span>
+                                <input type="range" class="tuning-slider" id="workspace-speed-slider" min="1" max="100"
+                                    value="40" style="width: 130px;">
+                                <span class="font-mono text-cyan" id="workspace-speed-label">0.85s / step (Slow &
+                                    Clear)</span>
                             </div>
 
                             <div class="tuning-item" id="controls-array-group">
                                 <span>Size:</span>
-                                <input type="range" class="tuning-slider" id="workspace-size-slider" min="5" max="40" value="10" style="width: 80px;">
+                                <input type="range" class="tuning-slider" id="workspace-size-slider" min="5" max="40"
+                                    value="10" style="width: 80px;">
                                 <span class="font-mono text-cyan" id="workspace-size-label">10</span>
                             </div>
                         </div>
 
                         <div class="tuning-cluster">
-                            <button class="btn btn-secondary btn-sm" id="btn-randomize-dataset">↻ Randomize Array</button>
-                            <button class="btn btn-primary btn-sm" id="btn-workspace-open-quiz" style="background: linear-gradient(135deg, #0ea5e9, #8b5cf6); border: none; font-weight: 600;">
+                            <button class="btn btn-secondary btn-sm" id="btn-randomize-dataset">↻ Randomize
+                                Array</button>
+                            <button class="btn btn-primary btn-sm" id="btn-workspace-open-quiz">
                                 🎓 Test Knowledge (10 Questions)
                             </button>
                         </div>
@@ -402,7 +589,8 @@
                 <div>
                     <h2>Multi-Algorithm Comparison Workbench</h2>
                     <p class="text-secondary" style="font-size: 0.9rem; margin-top: 4px;">
-                        Select sorting algorithms to execute side-by-side on an identical input array. Compare actual comparison counts and array writes in real time.
+                        Select sorting algorithms to execute side-by-side on an identical input array. Compare actual
+                        comparison counts and array writes in real time.
                     </p>
                 </div>
 
@@ -419,16 +607,20 @@
                     </div>
 
                     <div class="tuning-cluster">
-                        <button class="btn btn-outline btn-sm" id="btn-compare-preset-reversed">Reverse Array (Worst Case)</button>
-                        <button class="btn btn-outline btn-sm" id="btn-compare-preset-nearly">Nearly Sorted Array</button>
+                        <button class="btn btn-outline btn-sm" id="btn-compare-preset-reversed">Reverse Array (Worst
+                            Case)</button>
+                        <button class="btn btn-outline btn-sm" id="btn-compare-preset-nearly">Nearly Sorted
+                            Array</button>
                         <div class="tuning-item">
                             <span class="font-bold text-white">Speed:</span>
-                            <input type="range" class="tuning-slider" id="compare-speed-slider" min="150" max="1500" value="650" step="50" style="width: 110px;">
+                            <input type="range" class="tuning-slider" id="compare-speed-slider" min="150" max="1500"
+                                value="650" step="50" style="width: 110px;">
                             <span class="font-mono text-cyan" id="compare-speed-label">0.65s (Calibrated)</span>
                         </div>
                         <div class="tuning-item">
                             <span>Size:</span>
-                            <input type="range" class="tuning-slider" id="compare-size-slider" min="10" max="45" value="25">
+                            <input type="range" class="tuning-slider" id="compare-size-slider" min="10" max="45"
+                                value="25">
                             <span class="font-mono text-cyan" id="compare-size-label">25</span>
                         </div>
                     </div>
@@ -447,7 +639,8 @@
             <div class="compare-chart-card">
                 <div>
                     <h3 style="font-size: 1.1rem; color: #ffffff;">Comparative Operations Analysis</h3>
-                    <p class="text-muted" style="font-size: 0.85rem;">Empirical comparison of element comparisons and writes on the identical input sequence.</p>
+                    <p class="text-muted" style="font-size: 0.85rem;">Empirical comparison of element comparisons and
+                        writes on the identical input sequence.</p>
                 </div>
                 <div class="compare-chart-wrapper">
                     <canvas id="compare-summary-chart"></canvas>
@@ -467,27 +660,33 @@
                     <span>💡 What is this Laboratory & Why does it exist?</span>
                 </div>
                 <div class="perf-guide-body">
-                    In textbook theory, algorithms are represented as mathematical formulas like <code>O(N log N)</code> and <code>O(N²)</code>. 
-                    <strong>This lab bridges theory and reality:</strong> it benchmarks actual sorting algorithms on your machine across growing datasets (from <strong>N = 20 up to 400 elements</strong>), counting every single element comparison, memory swap, and microsecond of execution time.
+                    In textbook theory, algorithms are represented as mathematical formulas like <code>O(N log N)</code>
+                    and <code>O(N²)</code>.
+                    <strong>This lab bridges theory and reality:</strong> it benchmarks actual sorting algorithms on
+                    your machine across growing datasets (from <strong>N = 20 up to 400 elements</strong>), counting
+                    every single element comparison, memory swap, and microsecond of execution time.
                 </div>
                 <div class="perf-cards-grid">
                     <div class="perf-concept-card highlight-green">
                         <div class="perf-concept-title">🏆 1. The Scaling Champions</div>
                         <div class="perf-concept-desc">
-                            <strong>Quick Sort & Merge Sort (O(N log N))</strong>: Notice how their lines remain flat and low even at N=400 (~2,500 operations). They effortlessly scale to millions of elements.
+                            <strong>Quick Sort & Merge Sort (O(N log N))</strong>: Notice how their lines remain flat
+                            and low even at N=400 (~2,500 operations). They effortlessly scale to millions of elements.
                         </div>
                     </div>
                     <div class="perf-concept-card highlight-rose">
                         <div class="perf-concept-title">🐢 2. The Quadratic Wall</div>
                         <div class="perf-concept-desc">
-                            <strong>Bubble Sort (O(N²))</strong>: Watch the curve explode upward! At N=400, it requires <strong>over 80,000 operations</strong> (30x more CPU work) to accomplish the exact same task!
+                            <strong>Bubble Sort (O(N²))</strong>: Watch the curve explode upward! At N=400, it requires
+                            <strong>over 80,000 operations</strong> (30x more CPU work) to accomplish the exact same
+                            task!
                         </div>
                     </div>
                     <div class="perf-concept-card highlight-cyan">
                         <div class="perf-concept-title">🔍 3. What the Numbers Mean</div>
                         <div class="perf-concept-desc">
-                            <strong>Comparisons</strong> = checks between two items. 
-                            <strong>Swaps/Writes</strong> = memory modifications. 
+                            <strong>Comparisons</strong> = checks between two items.
+                            <strong>Swaps/Writes</strong> = memory modifications.
                             <strong>Duration</strong> = physical CPU time in milliseconds.
                         </div>
                     </div>
@@ -519,18 +718,26 @@
 
                     <div class="tuning-cluster" style="align-items: center;">
                         <span class="text-white font-bold" style="font-size: 0.8rem;">Quick Presets:</span>
-                        <button class="btn btn-outline btn-sm" id="btn-perf-preset-fast-vs-slow">🚀 Fast vs 🐢 Slow (Quick vs Bubble)</button>
-                        <button class="btn btn-outline btn-sm" id="btn-perf-preset-nearly-sorted">✨ The Nearly-Sorted Surprise</button>
-                        <button class="btn btn-secondary btn-sm" id="btn-perf-preset-all">📊 Benchmark All 5 Algorithms</button>
+                        <button class="btn btn-outline btn-sm" id="btn-perf-preset-fast-vs-slow">🚀 Fast vs 🐢 Slow
+                            (Quick vs Bubble)</button>
+                        <button class="btn btn-outline btn-sm" id="btn-perf-preset-nearly-sorted">✨ The Nearly-Sorted
+                            Surprise</button>
+                        <button class="btn btn-secondary btn-sm" id="btn-perf-preset-all">📊 Benchmark All 5
+                            Algorithms</button>
                     </div>
 
                     <div class="tuning-cluster">
                         <span class="text-muted" style="font-size: 0.8rem;">Algorithms to Test:</span>
-                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="bubble-sort" checked> Bubble</label>
-                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="insertion-sort" checked> Insertion</label>
-                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="merge-sort" checked> Merge</label>
-                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="quick-sort" checked> Quick</label>
-                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox" value="heap-sort" checked> Heap</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox"
+                                value="bubble-sort" checked> Bubble</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox"
+                                value="insertion-sort" checked> Insertion</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox"
+                                value="merge-sort" checked> Merge</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox"
+                                value="quick-sort" checked> Quick</label>
+                        <label class="compare-select-chip active"><input type="checkbox" class="perf-algo-checkbox"
+                                value="heap-sort" checked> Heap</label>
                     </div>
                 </div>
             </div>
@@ -588,14 +795,16 @@
                 <div>
                     <h2>Algorithm Library</h2>
                     <p class="text-secondary" style="font-size: 0.9rem; margin-top: 4px;">
-                        Explore our comprehensive catalog of 15 verified sorting, searching, and graph traversal algorithms.
+                        Explore our comprehensive catalog of 15 verified sorting, searching, and graph traversal
+                        algorithms.
                     </p>
                 </div>
 
                 <div class="library-filters-row">
                     <div class="library-search-box">
                         <span class="library-search-icon">🔍</span>
-                        <input type="text" class="form-input library-search-input" id="library-search-input" placeholder="Search algorithms by name or description...">
+                        <input type="text" class="form-input library-search-input" id="library-search-input"
+                            placeholder="Search algorithms by name or description...">
                     </div>
 
                     <div class="library-cat-pills">
@@ -613,7 +822,8 @@
                             <option value="hard">Hard</option>
                         </select>
 
-                        <label style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">
+                        <label
+                            style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">
                             <input type="checkbox" id="library-bookmarked-toggle">
                             <span>★ Bookmarked Only</span>
                         </label>
@@ -655,12 +865,14 @@
                 <div class="learn-chapter active" id="chapter-big-o">
                     <h2 class="chapter-title">Asymptotic Analysis & Big-O Notation</h2>
                     <p class="chapter-lead">
-                        In computer science, algorithm efficiency is evaluated asymptotically to describe how resource requirements (CPU cycles and memory) scale as the input size $N$ approaches infinity.
+                        In computer science, algorithm efficiency is evaluated asymptotically to describe how resource
+                        requirements (CPU cycles and memory) scale as the input size $N$ approaches infinity.
                     </p>
 
                     <div class="theory-card-box">
                         <h4>Asymptotic Growth Comparison</h4>
-                        <p>Observe how quadratic $O(N^2)$ curves diverge rapidly from linearithmic $O(N \log N)$ and linear $O(N)$ as input increases:</p>
+                        <p>Observe how quadratic $O(N^2)$ curves diverge rapidly from linearithmic $O(N \log N)$ and
+                            linear $O(N)$ as input increases:</p>
                         <div class="chart-box-wrap">
                             <canvas id="big-o-growth-canvas"></canvas>
                         </div>
@@ -669,9 +881,12 @@
                     <div class="theory-card-box">
                         <h4>The Three Asymptotic Notations</h4>
                         <ul>
-                            <li><strong>Big-O ($O$):</strong> Strict upper bound. Guarantees the algorithm will run no slower than this function in the worst case.</li>
-                            <li><strong>Big-Omega ($\Omega$):</strong> Strict lower bound. Proves the minimum resources theoretically required by any algorithm solving this problem.</li>
-                            <li><strong>Big-Theta ($\Theta$):</strong> Tight bound. Exists when an algorithm's upper and lower bounds asymptotically coincide.</li>
+                            <li><strong>Big-O ($O$):</strong> Strict upper bound. Guarantees the algorithm will run no
+                                slower than this function in the worst case.</li>
+                            <li><strong>Big-Omega ($\Omega$):</strong> Strict lower bound. Proves the minimum resources
+                                theoretically required by any algorithm solving this problem.</li>
+                            <li><strong>Big-Theta ($\Theta$):</strong> Tight bound. Exists when an algorithm's upper and
+                                lower bounds asymptotically coincide.</li>
                         </ul>
                     </div>
 
@@ -686,22 +901,27 @@
                 <div class="learn-chapter" id="chapter-sorting">
                     <h2 class="chapter-title">Sorting Paradigms & Lower Bounds</h2>
                     <p class="chapter-lead">
-                        Sorting is the foundational algorithmic problem of rearranging an arbitrary collection into a strictly monotonic order.
+                        Sorting is the foundational algorithmic problem of rearranging an arbitrary collection into a
+                        strictly monotonic order.
                     </p>
 
                     <div class="theory-card-box">
                         <h4>Comparison vs Non-Comparison Sorts</h4>
                         <p>
-                            Any comparison-based algorithm (Bubble, Quick, Merge, Heap) is bounded by the mathematical lower bound $\Omega(N \log N)$. 
-                            Non-comparison sorts such as <strong>Counting Sort</strong> break this barrier by utilizing direct memory indexing, running in linear time $O(N + K)$ when the key range $K$ is bounded.
+                            Any comparison-based algorithm (Bubble, Quick, Merge, Heap) is bounded by the mathematical
+                            lower bound $\Omega(N \log N)$.
+                            Non-comparison sorts such as <strong>Counting Sort</strong> break this barrier by utilizing
+                            direct memory indexing, running in linear time $O(N + K)$ when the key range $K$ is bounded.
                         </p>
                     </div>
 
                     <div class="theory-card-box">
                         <h4>Algorithm Stability & Memory Hierarchy</h4>
                         <p>
-                            A sort is <strong>stable</strong> if duplicate elements preserve their relative order from the input. 
-                            Furthermore, modern CPU hardware performance heavily favors contiguous linear array access (Quick Sort) over cache-evicting binary tree jumps (Heap Sort).
+                            A sort is <strong>stable</strong> if duplicate elements preserve their relative order from
+                            the input.
+                            Furthermore, modern CPU hardware performance heavily favors contiguous linear array access
+                            (Quick Sort) over cache-evicting binary tree jumps (Heap Sort).
                         </p>
                     </div>
 
@@ -715,16 +935,21 @@
                 <div class="learn-chapter" id="chapter-searching">
                     <h2 class="chapter-title">Searching: Sequential vs Interval vs Heuristic</h2>
                     <p class="chapter-lead">
-                        Locating a target value within a collection depends critically on whether the data is unordered, ordered, or uniformly distributed.
+                        Locating a target value within a collection depends critically on whether the data is unordered,
+                        ordered, or uniformly distributed.
                     </p>
 
                     <div class="theory-card-box">
                         <h4>Comparing Search Strategies</h4>
                         <ul>
-                            <li><strong>Linear Search:</strong> $O(N)$ worst-case. Required whenever data is unsorted.</li>
-                            <li><strong>Binary Search:</strong> $O(\log N)$. Repeatedly bisects a sorted array. 32 comparisons can search 4 billion elements.</li>
-                            <li><strong>Jump Search:</strong> $O(\sqrt{N})$. Balances block jumps with linear scan. Superior when jumping backward is costly.</li>
-                            <li><strong>Interpolation Search:</strong> $O(\log \log N)$ average on uniformly distributed numbers by calculating probe slope.</li>
+                            <li><strong>Linear Search:</strong> $O(N)$ worst-case. Required whenever data is unsorted.
+                            </li>
+                            <li><strong>Binary Search:</strong> $O(\log N)$. Repeatedly bisects a sorted array. 32
+                                comparisons can search 4 billion elements.</li>
+                            <li><strong>Jump Search:</strong> $O(\sqrt{N})$. Balances block jumps with linear scan.
+                                Superior when jumping backward is costly.</li>
+                            <li><strong>Interpolation Search:</strong> $O(\log \log N)$ average on uniformly distributed
+                                numbers by calculating probe slope.</li>
                         </ul>
                     </div>
 
@@ -738,16 +963,21 @@
                 <div class="learn-chapter" id="chapter-graphs">
                     <h2 class="chapter-title">Graph Traversals & Shortest Paths</h2>
                     <p class="chapter-lead">
-                        Graphs $G = (V, E)$ represent discrete relationships between entities. Traversing and discovering optimal routes are core engineering problems.
+                        Graphs $G = (V, E)$ represent discrete relationships between entities. Traversing and
+                        discovering optimal routes are core engineering problems.
                     </p>
 
                     <div class="theory-card-box">
                         <h4>Traversals & Optimal Routing</h4>
                         <ul>
-                            <li><strong>BFS (Breadth-First Search):</strong> Level-order exploration using a FIFO queue. Guarantees shortest path on unweighted graphs.</li>
-                            <li><strong>DFS (Depth-First Search):</strong> Deep recursive exploration with backtracking. Used for cycle detection and topological sorting.</li>
-                            <li><strong>Dijkstra’s Algorithm:</strong> Greedy shortest path using a min-priority queue to iteratively relax edge distances on non-negative weighted graphs.</li>
-                            <li><strong>A* Search:</strong> Optimizes Dijkstra by incorporating an admissible heuristic $f(n) = g(n) + h(n)$ to direct exploration towards the target.</li>
+                            <li><strong>BFS (Breadth-First Search):</strong> Level-order exploration using a FIFO queue.
+                                Guarantees shortest path on unweighted graphs.</li>
+                            <li><strong>DFS (Depth-First Search):</strong> Deep recursive exploration with backtracking.
+                                Used for cycle detection and topological sorting.</li>
+                            <li><strong>Dijkstra’s Algorithm:</strong> Greedy shortest path using a min-priority queue
+                                to iteratively relax edge distances on non-negative weighted graphs.</li>
+                            <li><strong>A* Search:</strong> Optimizes Dijkstra by incorporating an admissible heuristic
+                                $f(n) = g(n) + h(n)$ to direct exploration towards the target.</li>
                         </ul>
                     </div>
 
@@ -862,10 +1092,12 @@
                 <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 12px;">
                     Enter integers separated by commas or spaces (e.g. <code>42, 18, 9, 65, 33, 7, 50</code>).
                 </p>
-                <textarea class="form-textarea" id="custom-input-array" rows="4" style="width: 100%; font-family: var(--font-mono);"></textarea>
+                <textarea class="form-textarea" id="custom-input-array" rows="4"
+                    style="width: 100%; font-family: var(--font-mono);"></textarea>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="document.getElementById('modal-custom-input').classList.add('hidden')">Cancel</button>
+                <button class="btn btn-secondary"
+                    onclick="document.getElementById('modal-custom-input').classList.add('hidden')">Cancel</button>
                 <button class="btn btn-primary" id="btn-apply-custom-input">Apply Dataset</button>
             </div>
         </div>
@@ -885,24 +1117,31 @@
                     <div id="auth-error-msg" class="quiz-feedback-box feedback-wrong hidden"></div>
 
                     <div>
-                        <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Username or Email</label>
+                        <label
+                            style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Username
+                            or Email</label>
                         <input type="text" class="form-input" id="auth-username-input" style="width: 100%;" required>
                     </div>
 
                     <div id="auth-email-group" class="hidden">
-                        <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Email Address</label>
+                        <label
+                            style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Email
+                            Address</label>
                         <input type="email" class="form-input" id="auth-email-input" style="width: 100%;">
                     </div>
 
                     <div>
-                        <label style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Password</label>
-                        <input type="password" class="form-input" id="auth-password-input" style="width: 100%;" required>
+                        <label
+                            style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Password</label>
+                        <input type="password" class="form-input" id="auth-password-input" style="width: 100%;"
+                            required>
                     </div>
 
                     <p id="auth-toggle-prompt" style="font-size: 0.85rem; color: var(--text-secondary);"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('modal-auth').classList.add('hidden')">Cancel</button>
+                    <button type="button" class="btn btn-secondary"
+                        onclick="document.getElementById('modal-auth').classList.add('hidden')">Cancel</button>
                     <button type="submit" class="btn btn-primary" id="auth-submit-btn">Sign In</button>
                 </div>
             </form>
@@ -928,8 +1167,10 @@
                     <div class="quiz-progress-fill" id="quiz-progress-bar" style="width: 10%;"></div>
                 </div>
                 <div class="quiz-progress-labels">
-                    <span id="quiz-question-number-pill" class="text-cyan font-mono" style="font-weight: 600;">Question 1 of 10</span>
-                    <span id="quiz-current-score-pill" class="font-mono text-emerald" style="font-weight: 600;">Score: 0 / 10</span>
+                    <span id="quiz-question-number-pill" class="text-cyan font-mono" style="font-weight: 600;">Question
+                        1 of 10</span>
+                    <span id="quiz-current-score-pill" class="font-mono text-emerald" style="font-weight: 600;">Score: 0
+                        / 10</span>
                 </div>
             </div>
 
@@ -954,7 +1195,8 @@
                     <div class="summary-badge" id="quiz-summary-badge">🏆</div>
                     <h3 id="quiz-summary-title">Concept Mastery Completed!</h3>
                     <div class="summary-score-large" id="quiz-summary-score">8 / 10</div>
-                    <p class="summary-desc" id="quiz-summary-desc">Great job! You have a strong grasp of how this algorithm operates under the hood.</p>
+                    <p class="summary-desc" id="quiz-summary-desc">Great job! You have a strong grasp of how this
+                        algorithm operates under the hood.</p>
                 </div>
             </div>
 
@@ -991,4 +1233,5 @@
     <!-- Master Application Bundle -->
     <script type="module" src="/static/js/app.js"></script>
 </body>
+
 </html>
